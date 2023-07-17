@@ -1,20 +1,6 @@
 // GlobalComponents for Volar
-declare interface TempVue3ProTableProps {
-  blockRedundantRequestOnReset: BooleanConstructor;
-  border: BooleanConstructor;
-  columns: ArrayConstructor;
-  hideTitleBar: BooleanConstructor;
-  loadTableDataBeforeMount: BooleanConstructor;
-  pagination: BooleanConstructor | ObjectConstructor;
-  request: FunctionConstructor;
-  rowKey: StringConstructor;
-  search: BooleanConstructor | ObjectConstructor;
-  title: StringConstructor;
-  tree: ObjectConstructor;
-}
-
 export declare interface Vue3ProTableProps {
-  request?: (...args: any[]) => Promise<{ data: object[], total: number }>
+  request: (...args: any[]) => Promise<{ data: object[], total: number }>
   // 表格标题
   title?: string
   // 是否隐藏标题栏
@@ -33,7 +19,7 @@ export declare interface Vue3ProTableProps {
   blockRedundantRequestOnReset?: boolean
 }
 
-declare const CVue3ProTable: import('vue').DefineComponent<TempVue3ProTableProps, unknown, unknown, Record<string, never>, Record<string, never>, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, Record<string, never>, string, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<TempVue3ProTableProps>>, object, object>;
+declare const CVue3ProTable: import('vue').DefineComponent<Vue3ProTableProps, unknown, unknown, Record<string, never>, Record<string, never>, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, Record<string, never>, string, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<Vue3ProTableProps>>, object, object>;
 declare const CHelloWorld: import('vue').DefineComponent<{
   msg: StringConstructor;
 }, unknown, unknown, Record<string, never>, Record<string, never>, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, Record<string, never>, string, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
