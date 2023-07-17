@@ -1,7 +1,7 @@
 {
   "name": "vue3-el-pro-table",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "main": "dist/vue3-el-pro-table.umd.js",
   "types": "dist/global.d.ts",
   "files": [
@@ -12,7 +12,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "build-lib": "vue-cli-service build --target lib --name vue3-el-pro-table ./src/install.js && cp src/global.d.ts dist",
+    "build-lib": "vue-cli-service build --target lib --name vue3-el-pro-table ./src/install.js",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "gen-declaration": "vue-tsc -p tsconfig.declaration.json"
