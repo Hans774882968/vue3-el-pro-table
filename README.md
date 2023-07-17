@@ -57,11 +57,40 @@ createApp(App)
 
 Then use `<vue3-pro-table />` directly in `.vue` file.
 
-Interface:
+Import interface:
 
 ```ts
 import { Vue3ProTableProps } from 'vue3-el-pro-table';
 ```
+
+Component props definition:
+
+```ts
+export declare interface Vue3ProTableProps {
+  request: (...args: any[]) => Promise<{ data: object[], total: number }>
+  // 表格标题
+  title?: string
+  // 是否隐藏标题栏
+  hideTitleBar?: boolean
+  // 搜索表单配置，false表示不显示搜索表单
+  search?: boolean | object
+  border?: boolean
+  // 表头配置
+  columns?: object[]
+  // 行数据的Key，同elementUI的table组件的row-key
+  rowKey?: string
+  // 分页配置，false表示不显示分页
+  pagination?: boolean | object
+  tree?: object
+  // The above attributes are all from https://github.com/huzhushan/vue3-pro-table. The following properties are added by me.
+  loadTableDataBeforeMount?: boolean
+  blockRedundantRequestOnReset?: boolean
+  paddingLeft?: string | number
+  paddingRight?: string | number
+}
+```
+
+Plz refer to https://github.com/huzhushan/vue3-pro-table for instructions on how to use `vue3-el-pro-table`.
 
 ### 开发过程笔记
 根据[参考链接3](https://5balloons.info/create-publish-you-first-vue-plugin-on-npm-the-right-way/)，实际上我们只需要提供一个符合Vue插件格式的入口`install.js`，和一个Vue组件。但为了满足npm包迭代过程中的预览、测试等需求，我们仍然需要以组件库的标准来开发这个npm包。因此我采用的方案是：先使用`vue-cli`快速创建一个项目，满足组件的预览、测试等需求，在此基础上再新增一个构建流程。

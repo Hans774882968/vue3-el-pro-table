@@ -15,8 +15,11 @@ export declare interface Vue3ProTableProps {
   // 分页配置，false表示不显示分页
   pagination?: boolean | object
   tree?: object
+  // The above attributes are all from https://github.com/huzhushan/vue3-pro-table. The following properties are added by me.
   loadTableDataBeforeMount?: boolean
   blockRedundantRequestOnReset?: boolean
+  paddingLeft?: string | number
+  paddingRight?: string | number
 }
 
 declare const CVue3ProTable: import('vue').DefineComponent<Vue3ProTableProps, unknown, unknown, Record<string, never>, Record<string, never>, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, Record<string, never>, string, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<Vue3ProTableProps>>, object, object>;

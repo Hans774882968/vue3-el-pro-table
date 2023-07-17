@@ -10,6 +10,7 @@
       label-position="left"
       :label-width="search.labelWidth"
       ref="searchForm"
+      :style="searchAreaStyle"
     >
       <el-form-item
         v-for="item in search.fields"
@@ -167,7 +168,7 @@
     </el-form>
 
     <!-- title 和 工具栏 -->
-    <div class="head" v-if="!hideTitleBar">
+    <div class="head" v-if="!hideTitleBar" :style="headAreaStyle">
       <slot name="title">
         <span class="title">{{ title }}</span>
       </slot>
@@ -176,7 +177,7 @@
       </div>
     </div>
     <!-- table表格栏 -->
-    <div class="table">
+    <div class="table" :style="tableAreaStyle">
       <el-table
         :data="tableData"
         :row-key="rowKey"
@@ -209,7 +210,7 @@
     <el-pagination
       v-if="paginationConfig.show && total > 0"
       class="pagination"
-      :style="paginationConfig.style"
+      :style="paginationAreaStyle"
       @size-change="handleSizeChange"
       v-model:currentPage="pageNum"
       @current-change="handleCurrentChange"
@@ -225,7 +226,7 @@
 // modify from https://github.com/huzhushan/vue3-pro-table/tree/master
 import { RefreshRight, Search } from '@element-plus/icons-vue';
 import {
-  defineComponent, onBeforeMount, reactive, toRefs,
+  computed, defineComponent, onBeforeMount, reactive, toRefs,
 } from 'vue';
 
 const formatDate = (date, dateFormat) => {
@@ -289,17 +290,14 @@ const getSearchModel = (search) => {
 export default defineComponent({
   components: { RefreshRight, Search },
   props: {
-
     blockRedundantRequestOnReset: {
       default: false,
       type: Boolean,
     },
-
     border: {
       default: false,
       type: Boolean,
     },
-
     // 表头配置
     columns: {
       default() {
@@ -307,41 +305,42 @@ export default defineComponent({
       },
       type: Array,
     },
-
     // 是否隐藏标题栏
     hideTitleBar: {
       default: false,
       type: Boolean,
     },
-
     loadTableDataBeforeMount: {
       default: false,
       type: Boolean,
     },
-
+    paddingLeft: {
+      default: 0,
+      type: [String, Number],
+    },
+    paddingRight: {
+      default: 0,
+      type: [String, Number],
+    },
     // 分页配置，false表示不显示分页
     pagination: {
       default: () => ({}),
       type: [Boolean, Object],
     },
-
     // 请求数据的方法
     request: {
       type: Function,
     },
-
     // 行数据的Key，同elementUI的table组件的row-key
     rowKey: {
       default: 'id',
       type: String,
     },
-
     // 搜索表单配置，false表示不显示搜索表单
     search: {
       default: false,
       type: [Boolean, Object],
     },
-
     // 表格标题
     title: {
       default: '',
@@ -485,17 +484,48 @@ export default defineComponent({
       }
     });
 
+    const getPaddingValue = (p) => (typeof p === 'number' ? `${p}px` : p);
+    const searchAreaStyle = computed(() => ({
+      paddingLeft: getPaddingValue(props.paddingLeft),
+      paddingRight: getPaddingValue(props.paddingRight),
+    }));
+    const headAreaStyle = computed(() => ({
+      paddingLeft: getPaddingValue(props.paddingLeft),
+      paddingRight: getPaddingValue(props.paddingRight),
+    }));
+    const tableAreaStyle = computed(() => ({
+      paddingLeft: getPaddingValue(props.paddingLeft),
+      paddingRight: getPaddingValue(props.paddingRight),
+    }));
+    const paginationAreaStyle = computed(() => {
+      const paddingObject = {
+        paddingLeft: getPaddingValue(props.paddingLeft),
+        paddingRight: getPaddingValue(props.paddingRight),
+      };
+      if (props.pagination.style) {
+        return {
+          ...paddingObject,
+          ...props.pagination.style,
+        };
+      }
+      return paddingObject;
+    });
+
     if (typeof props.pagination === 'object') {
       state.paginationConfig = {
         layout: props.pagination.layout || 'total, sizes, prev, pager, next, jumper',
         pageSizes: props.pagination.pageSizes || [10, 20, 30, 40, 50, 100],
         show: true,
-        style: props.pagination.style || {},
+        style: paginationAreaStyle.value,
       };
     }
 
     return {
       ...toRefs(state),
+      headAreaStyle,
+      paginationAreaStyle,
+      searchAreaStyle,
+      tableAreaStyle,
     };
   },
 });

@@ -3951,7 +3951,7 @@ electron-to-chromium@^1.4.431:
 
 element-plus@^2.3.8:
   version "2.3.8"
-  resolved "https://registry.npmmirror.com/element-plus/-/element-plus-2.3.8.tgz#46032abe1a712abfb65932f146ee19281312a9cf"
+  resolved "https://registry.yarnpkg.com/element-plus/-/element-plus-2.3.8.tgz#46032abe1a712abfb65932f146ee19281312a9cf"
   integrity sha512-yHQR0/tG2LvPkpGUt7Te/hPmP2XW/BytBNUbx+EFO54VnGCOE3upmQcVffNp1PLgwg9sthYDXontUWpnpmLPJw==
   dependencies:
     "@ctrl/tinycolor" "^3.4.1"
