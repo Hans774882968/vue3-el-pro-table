@@ -2,6 +2,19 @@
   "name": "vue3-el-pro-table",
   "version": "0.1.0",
   "private": false,
+  "description": "Add a powerful global component <vue3-pro-table /> based on element-plus for vue3 projects. This component provides features such as search, table, and pagination.",
+  "keywords": [
+    "element-plus",
+    "vue3-el-pro-table",
+    "table"
+  ],
+  "author": "hans774882968",
+  "license": "ISC",
+  "homepage": "https://github.com/Hans774882968/vue3-el-pro-table",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Hans774882968/vue3-el-pro-table"
+  },
   "main": "dist/vue3-el-pro-table.umd.js",
   "types": "dist/global.d.ts",
   "files": [

@@ -141,11 +141,26 @@ module.exports = defineConfig({
 ### add TS Support
 为了防止本项目报TS错误，我们的npm包`vue3-el-pro-table`需要给出`.d.ts`文件。
 
-`package.json`指定类型定义文件路径：
+1. 本项目`package.json`指定类型定义文件路径：
 
 ```json
 {
   "types": "dist/global.d.ts"
+}
+```
+
+2. 本项目`tsconfig.json`新增配置：
+
+```json
+{
+  "compilerOptions": {
+    "types": [
+      "webpack-env",
+      "jest",
+      "vue3-el-pro-table/dist/global.d.ts", // 获取 vue3-el-pro-table 注册的全局组件的类型提示
+      "element-plus/global.d.ts" // 获取 element-plus 组件的类型提示
+    ],
+  }
 }
 ```
 
@@ -173,7 +188,7 @@ module.exports = defineConfig({
 });
 ```
 
-最理想的情况下`dist/global.d.ts`能在编译时直接生成，但可惜我们参考的`Vue3ProTable.vue`不是一个TS组件，且改造为TS组件的工作量过大，因此`global.d.ts`是手动维护的。
+最理想的情况下`dist/global.d.ts`能在编译时直接生成，但可惜我们参考的`Vue3ProTable.vue`不是一个TS组件，且改造为TS组件的工作量过大，因此`global.d.ts`是手动维护的，[传送门](https://github.com/Hans774882968/vue3-el-pro-table/blob/main/src/global.d.ts)。
 
 我们期望`dist/global.d.ts`能够给组件提供类型提示。根据[参考链接4](https://juejin.cn/post/7066730414626308103)，需要以下代码：
 
@@ -188,7 +203,7 @@ declare const CHelloWorld: import('vue').DefineComponent<{
 declare module 'vue' {
   export interface GlobalComponents {
     Vue3ProTable: typeof CVue3ProTable
-    HelloWorld: typeof CHelloWorld
+    TestHelloWorld: typeof CHelloWorld
   }
 }
 ```

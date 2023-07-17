@@ -33,17 +33,17 @@ export declare interface Vue3ProTableProps {
   blockRedundantRequestOnReset?: boolean
 }
 
-declare const CVue3ProTable: import('vue').DefineComponent<TempVue3ProTableProps, unknown, unknown, object, object, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, object, string, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<TempVue3ProTableProps>>, object, object>;
+declare const CVue3ProTable: import('vue').DefineComponent<TempVue3ProTableProps, unknown, unknown, Record<string, never>, Record<string, never>, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, Record<string, never>, string, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<TempVue3ProTableProps>>, object, object>;
 declare const CHelloWorld: import('vue').DefineComponent<{
   msg: StringConstructor;
-}, unknown, unknown, object, object, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, object, string, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
+}, unknown, unknown, Record<string, never>, Record<string, never>, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, Record<string, never>, string, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
   msg: StringConstructor;
 }>>, object, object>;
 
 declare module 'vue' {
   export interface GlobalComponents {
     Vue3ProTable: typeof CVue3ProTable
-    HelloWorld: typeof CHelloWorld
+    TestHelloWorld: typeof CHelloWorld
   }
 }
 
