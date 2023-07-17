@@ -116,7 +116,7 @@ Vue3ProTable.install = install;
 export default { install };
 ```
 
-4. 新增`build-lib`命令并运行`yarn build-lib`：
+4. 新增`build-lib`命令并运行`yarn build-lib`——这就是`vue3-el-pro-table`生成Vue插件的构建命令：
 
 ```json
 {
