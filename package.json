@@ -1,6 +1,6 @@
 {
   "name": "vue3-el-pro-table",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": false,
   "description": "Add a powerful global component <vue3-pro-table /> based on element-plus for vue3 projects. This component provides features such as search, table, and pagination.",
   "keywords": [
